@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_11_18_093123) do
   enable_extension "plpgsql"
 
   create_table "apikeys", force: :cascade do |t|
-    t.string "key", null: false
+    t.string "key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
