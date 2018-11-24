@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Fcm token:</strong>
+  <%= @user.fcm_token %>
+</p>
+
+<p>
+  <strong>Enable email notify:</strong>
+  <%= @user.enable_email_notify %>
+</p>
+
+<p>
+  <strong>Enable fcm notify:</strong>
+  <%= @user.enable_fcm_notify %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
