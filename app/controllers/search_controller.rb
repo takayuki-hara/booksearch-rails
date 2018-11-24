@@ -1,6 +1,8 @@
 require 'net/https'
 
 class SearchController < ApplicationController
+  before_action :set_empty_book
+
   def index
   end
 
@@ -10,6 +12,10 @@ class SearchController < ApplicationController
   end
 
   private
+    def set_empty_book
+      @books = Array[Book.new(largeimage_url: "")]
+    end
+
     def get_apikey
       return Apikey.first.key
     end
@@ -17,8 +23,7 @@ class SearchController < ApplicationController
     def fetch(word)
       params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: 1, sort: 'standard'})
       uri = URI.parse("https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?#{params}")
-      @query = uri.query
-
+      logger.debug('test logger')
       # 新しくHTTPセッションを開始し、結果をresponseへ格納（Net::HTTPResponseのインスタンス）
       response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.open_timeout = 5
@@ -29,10 +34,10 @@ class SearchController < ApplicationController
         case response
         when Net::HTTPSuccess
           @result = JSON.parse(response.body)
-          @title = @result["Items"][0]["title"]
-          @price = @result["Items"][0]["price"]
-          @author = @result["Items"][0]["author"]
-          @largeimage_url = @result["Items"][0]["largeimage_url"]
+          @books = Array.new
+          @result["Items"].each do |item|
+            @books << extract_item(item)
+          end
         when Net::HTTPRedirection
           @message = "Redirection: code=#{response.code} message=#{response.message}"
         else
@@ -48,4 +53,19 @@ class SearchController < ApplicationController
         @message = "e.message"
       end
     end
+
+    def extract_item(item)
+      return Book.new(
+        title: item["title"],
+        price: item["itemPrice"],
+        author: item["author"],
+        publisher: item["publisherName"],
+        isbn: item["isbn"],
+        caption: item["itemCaption"],
+        sales_date: item["salesDate"],
+        item_url: item["itemUrl"],
+        largeimage_url: item["largeImageUrl"]
+      )
+    end
+
 end

@@ -1,6 +1,4 @@
 <h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
-
 
 <%= form_tag({ controller: :search, action: :search },
   id: :fm, class: :search) do %>
@@ -9,11 +7,24 @@
   <%= submit_tag '検索' %>
 <% end %>
 
-<div id="result">
-<%= @title %>
-<%= @price %>
-<%= @author %>
-<%= @largeimage_url %>
-<%= @message %>
-<%= @result %>
-</div>
+<%#= debug @books.inspect %>
+<%#= @message %>
+
+<table>
+  <tr>
+    <th>画像</th><th>ISBNコード</th><th>書名</th><th>価格</th>
+    <th>出版社</th><th>刊行日</th><th>author</th>
+  </tr>
+<% @books.each do |book| %>
+  <tr>
+    <td><%= image_tag(book.largeimage_url) %></td>
+    <td><%= book.isbn %></td>
+    <td><%= book.title %></td>
+    <td><%= book.price %>円</td>
+    <td><%= book.publisher %></td>
+    <td><%= book.sales_date %></td>
+    <td><%= book.author %></td>
+  </tr>
+<% end %>
+</table>
+
