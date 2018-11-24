@@ -1,0 +1,32 @@
+<h1>Search#index</h1>
+
+<%= form_tag({ controller: :search, action: :search },
+  id: :fm, class: :search) do %>
+  <label for="keywd">検索キーワード：</label>
+  <%= text_field_tag :keywd, '', size: 30 %>
+  <%= submit_tag '検索' %>
+<% end %>
+
+<%#= debug @books.inspect %>
+<%#= @message %>
+
+<table>
+<% @books.each do |book| %>
+  <tr>
+    <td rowspan="3"><%= image_tag(book.largeimage_url) %></td>
+    <td colspan="3"><%= book.title %></td>
+    <td><%= link_to('リンク', book.item_url, target: :_blank) %></td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= book.author %></td>
+    <td><%= book.publisher %></td>
+    <td>お気に入り</td>
+  </tr>
+  <tr>
+    <td><%= book.price %>円</td>
+    <td><%= book.sales_date %></td>
+    <td></td>
+    <td>ウォッチ</td>
+  </tr>
+<% end %>
+</table>
