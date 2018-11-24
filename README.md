@@ -72,7 +72,7 @@ Things you may want to cover:
   # コントローラーを追加
   rails generate controller Top index
   # モデルを追加
-  rails generate model book title:string:index price:integer auther:string publisher:string isbn:string caption:string sales_date:string item_url:string largeimage_url:string
+  rails generate model book title:string:index price:integer author:string publisher:string isbn:string caption:string sales_date:string item_url:string largeimage_url:string
   # scaffoldでまとめて作成
   rails generate scaffold apikey apikey:string
   # ローカルDBへの接続
