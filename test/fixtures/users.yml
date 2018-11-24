@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  password_digest: MyString
+  role: 1
+  email: MyString
+  fcm_token: MyString
+  enable_email_notify: false
+  enable_fcm_notify: false
+
+two:
+  username: MyString
+  password_digest: MyString
+  role: 1
+  email: MyString
+  fcm_token: MyString
+  enable_email_notify: false
+  enable_fcm_notify: false
