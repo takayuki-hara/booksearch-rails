@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'mypage/index'
   resources :users
   resources :apikeys
 
