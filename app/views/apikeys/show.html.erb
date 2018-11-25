@@ -1,9 +1,19 @@
-<p id="notice"><%= notice %></p>
+<%= render 'nav' %>
 
-<p>
-  <strong>Key:</strong>
-  <%= @apikey.key %>
-</p>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>詳細</h3>
+  </div>
+  
+  <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_apikey_path(@apikey) %> |
-<%= link_to 'Back', apikeys_path %>
+  <p>
+    <strong>Key:</strong>
+    <%= @apikey.key %>
+  </p>
+
+  <%= link_to 'Edit', edit_apikey_path(@apikey) %> |
+  <%= link_to 'Back', apikeys_path %>
+
+</div>
