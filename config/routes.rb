@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   get 'manage_console/index'
 
-  get 'welcome/index'
+  get 'top/index'
 
-  root 'welcome#index'
+  root 'top#index'
 
 end

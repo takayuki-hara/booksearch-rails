@@ -8,14 +8,15 @@ Things you may want to cover:
 * Ruby version
 
   * ruby 2.5.1p57 (2018-03-29 revision 63029)
+  * rails 5.2.1
 
 * System dependencies
 
   * Heroku
+  * PostgreSQL
+  * Bootstrap4
 
 * Configuration
-
-  * PostgreSQL
 
 * Database creation
 
