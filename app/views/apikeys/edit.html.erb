@@ -1,6 +1,16 @@
-<h1>Editing Apikey</h1>
+<%= render 'nav' %>
 
-<%= render 'form', apikey: @apikey %>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>編集</h3>
+  </div>
 
-<%= link_to 'Show', @apikey %> |
-<%= link_to 'Back', apikeys_path %>
+  <h1>Editing Apikey</h1>
+
+  <%= render 'form', apikey: @apikey %>
+
+  <%= link_to 'Show', @apikey %> |
+  <%= link_to 'Back', apikeys_path %>
+
+</div>

@@ -1,5 +1,5 @@
 <!-- ナビゲーション（ほぼ共通） -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
   <a class="navbar-brand" href="#">Book Search</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
       <li class="nav-item">
         <%= link_to '書籍検索', search_index_path, :class => "nav-link" %>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <%= link_to 'マイページ', mypage_index_url, :class => "nav-link" %>
       </li>
       <li class="nav-item">
@@ -25,16 +25,3 @@
     </ul>
   </div>
 </nav>
-
-<!-- メイン -->
-<div class="pt-5 pb-5 container">
-  <div class="p-3 pt-5">
-    <h3>マイページ</h3>
-  </div>
-
-  <div class="alert alert-light p-3" role="alert">
-    <hr>
-    <h4 class="alert-heading">機能</h4>
-    <p><%= link_to 'Edit', edit_user_path(1) %></p>
-  </div>
-</div>

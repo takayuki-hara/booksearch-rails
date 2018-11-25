@@ -1,39 +1,49 @@
-<p id="notice"><%= notice %></p>
+<%= render 'nav' %>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>ユーザー詳細</h3>
+  </div>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Password digest:</strong>
+    <%= @user.password_digest %>
+  </p>
 
-<p>
-  <strong>Fcm token:</strong>
-  <%= @user.fcm_token %>
-</p>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>
 
-<p>
-  <strong>Enable email notify:</strong>
-  <%= @user.enable_email_notify %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <strong>Enable fcm notify:</strong>
-  <%= @user.enable_fcm_notify %>
-</p>
+  <p>
+    <strong>Fcm token:</strong>
+    <%= @user.fcm_token %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <p>
+    <strong>Enable email notify:</strong>
+    <%= @user.enable_email_notify %>
+  </p>
+
+  <p>
+    <strong>Enable fcm notify:</strong>
+    <%= @user.enable_fcm_notify %>
+  </p>
+
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+
+</div>

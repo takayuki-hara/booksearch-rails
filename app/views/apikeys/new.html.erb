@@ -1,5 +1,15 @@
-<h1>New Apikey</h1>
+<%= render 'nav' %>
 
-<%= render 'form', apikey: @apikey %>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>新規</h3>
+  </div>
+  
+  <h1>New Apikey</h1>
 
-<%= link_to 'Back', apikeys_path %>
+  <%= render 'form', apikey: @apikey %>
+
+  <%= link_to 'Back', apikeys_path %>
+
+</div>
