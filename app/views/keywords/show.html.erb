@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%= render 'nav' %>
 
-<p>
-  <strong>User:</strong>
-  <%= @keyword.user %>
-</p>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>ユーザー詳細</h3>
+  </div>
 
-<p>
-  <strong>Item count:</strong>
-  <%= @keyword.item_count %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_keyword_path(@keyword) %> |
-<%= link_to 'Back', keywords_path %>
+  <p>
+    <strong>User:</strong>
+    <%= @keyword.user.username %>
+  </p>
+
+  <p>
+    <strong>Item count:</strong>
+    <%= @keyword.item_count %>
+  </p>
+
+  <%= link_to 'Edit', edit_keyword_path(@keyword) %> |
+  <%= link_to 'Back', keywords_path %>
+
+</div>
