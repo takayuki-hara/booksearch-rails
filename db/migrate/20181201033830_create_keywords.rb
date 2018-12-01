@@ -2,6 +2,7 @@ class CreateKeywords < ActiveRecord::Migration[5.2]
   def change
     create_table :keywords do |t|
       t.references :user, foreign_key: true
+      t.string :keyword, :null => false
       t.integer :item_count
 
       t.timestamps

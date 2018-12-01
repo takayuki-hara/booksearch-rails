@@ -17,7 +17,7 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create keyword" do
     assert_difference('Keyword.count') do
-      post keywords_url, params: { keyword: { item_count: @keyword.item_count, user_id: @keyword.user_id } }
+      post keywords_url, params: { keyword: { keyword: @keyword.keyword, item_count: @keyword.item_count, user_id: @keyword.user_id } }
     end
 
     assert_redirected_to keyword_url(Keyword.last)
@@ -34,7 +34,7 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update keyword" do
-    patch keyword_url(@keyword), params: { keyword: { item_count: @keyword.item_count, user_id: @keyword.user_id } }
+    patch keyword_url(@keyword), params: { keyword: { keyword: @keyword.keyword, item_count: @keyword.item_count, user_id: @keyword.user_id } }
     assert_redirected_to keyword_url(@keyword)
   end
 

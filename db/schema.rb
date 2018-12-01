@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_033830) do
 
   create_table "keywords", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "keyword", null: false
     t.integer "item_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
