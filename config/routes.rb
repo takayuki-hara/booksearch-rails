@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :keywords
+  resources :favorites
   resources :apikeys
 
   get 'search/index'

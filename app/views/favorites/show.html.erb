@@ -1,0 +1,24 @@
+<%= render 'nav' %>
+
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>お気に入り詳細</h3>
+  </div>
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @favorite.user %>
+  </p>
+
+  <p>
+    <strong>Book:</strong>
+    <%= @favorite.book %>
+  </p>
+
+  <%= link_to 'Edit', edit_favorite_path(@favorite) %> |
+  <%= link_to 'Back', favorites_path %>
+
+</div>
