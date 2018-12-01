@@ -1,6 +1,16 @@
+<%= render 'nav' %>
+
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>お気に入り編集</h3>
+  </div>
+
 <h1>Editing Favorite</h1>
 
-<%= render 'form', favorite: @favorite %>
+  <%= render 'form', favorite: @favorite %>
 
-<%= link_to 'Show', @favorite %> |
-<%= link_to 'Back', favorites_path %>
+  <%= link_to 'Show', @favorite %> |
+  <%= link_to 'Back', favorites_path %>
+
+</div>
