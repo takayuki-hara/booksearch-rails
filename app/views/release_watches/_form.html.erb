@@ -1,0 +1,32 @@
+<%= form_with(model: release_watch, local: true) do |form| %>
+  <% if release_watch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(release_watch.errors.count, "error") %> prohibited this release_watch from being saved:</h2>
+
+      <ul>
+      <% release_watch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :book_id %>
+    <%= form.text_field :book_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sales_date %>
+    <%= form.date_select :sales_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

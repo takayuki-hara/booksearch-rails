@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @release_watch.user %>
+</p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @release_watch.book %>
+</p>
+
+<p>
+  <strong>Sales date:</strong>
+  <%= @release_watch.sales_date %>
+</p>
+
+<%= link_to 'Edit', edit_release_watch_path(@release_watch) %> |
+<%= link_to 'Back', release_watches_path %>
