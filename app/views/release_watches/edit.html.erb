@@ -1,6 +1,16 @@
-<h1>Editing Release Watch</h1>
+<%= render 'nav' %>
 
-<%= render 'form', release_watch: @release_watch %>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>リリースウォッチ編集</h3>
+  </div>
 
-<%= link_to 'Show', @release_watch %> |
-<%= link_to 'Back', release_watches_path %>
+  <h1>Editing Release Watch</h1>
+
+  <%= render 'form', release_watch: @release_watch %>
+
+  <%= link_to 'Show', @release_watch %> |
+  <%= link_to 'Back', release_watches_path %>
+
+</div>

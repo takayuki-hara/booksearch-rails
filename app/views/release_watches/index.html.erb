@@ -1,31 +1,43 @@
-<p id="notice"><%= notice %></p>
+<%= render 'nav' %>
 
-<h1>Release Watches</h1>
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>リリースウォッチ一覧</h3>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Book</th>
-      <th>Sales date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @release_watches.each do |release_watch| %>
+  <h1>Release Watches</h1>
+
+  <table>
+    <thead>
       <tr>
-        <td><%= release_watch.user %></td>
-        <td><%= release_watch.book %></td>
-        <td><%= release_watch.sales_date %></td>
-        <td><%= link_to 'Show', release_watch %></td>
-        <td><%= link_to 'Edit', edit_release_watch_path(release_watch) %></td>
-        <td><%= link_to 'Destroy', release_watch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>User</th>
+        <th>Book</th>
+        <th>Sales date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @release_watches.each do |release_watch| %>
+        <tr>
+          <td><%= release_watch.user %></td>
+          <td><%= release_watch.book %></td>
+          <td><%= release_watch.sales_date %></td>
+          <td><%= link_to 'Show', release_watch %></td>
+          <td><%= link_to 'Edit', edit_release_watch_path(release_watch) %></td>
+          <td><%= link_to 'Destroy', release_watch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Release Watch', new_release_watch_path %>
+  <br>
+
+  <%= link_to 'New Release Watch', new_release_watch_path %>
+
+</div>
+
+
