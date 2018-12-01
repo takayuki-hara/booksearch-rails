@@ -1,0 +1,15 @@
+<%= render 'nav' %>
+
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>新規キーワード登録</h3>
+  </div>
+
+  <h1>New Keyword</h1>
+
+  <%= render 'form', keyword: @keyword %>
+
+  <%= link_to 'Back', keywords_path %>
+
+</div>
