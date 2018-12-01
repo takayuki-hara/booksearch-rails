@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  resources :release_watches
   resources :users
   resources :keywords
   resources :favorites
+  resources :release_watches
+
   resources :apikeys
 
   get 'search/index'
-  post 'search/search'
+  get 'search' => 'search#search'
+  post 'search' => 'search#search'
 
   get 'mypage/index'
 

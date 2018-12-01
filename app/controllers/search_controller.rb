@@ -3,12 +3,20 @@ require 'net/https'
 class SearchController < ApplicationController
   before_action :set_empty_book
 
+  # GET /search/index
   def index
   end
 
+  # GET /search/search
+  # GET /search/search.json
+  # POST /search/search
   def search
     fetch(params[:keywd])
-    render 'search/index'
+
+    respond_to do |format|
+      format.html { render 'search/index' }
+      format.json { render json: @books, status: :ok }
+    end
   end
 
   private
