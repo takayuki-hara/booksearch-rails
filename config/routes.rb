@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :release_watches
   resources :users
   resources :keywords
   resources :favorites

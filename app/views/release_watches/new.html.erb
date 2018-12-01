@@ -1,0 +1,16 @@
+<%= render 'nav' %>
+
+<!-- メイン -->
+<div class="pt-5 pb-5 container">
+  <div class="p-3 pt-5">
+    <h3>新規リリースウォッチ登録</h3>
+  </div>
+
+  <h1>New Release Watch</h1>
+
+  <%= render 'form', release_watch: @release_watch %>
+
+  <%= link_to 'Back', release_watches_path %>
+
+</div>
+
