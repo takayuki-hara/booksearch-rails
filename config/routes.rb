@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :apikeys
 
   get 'search/index'
-  get 'search' => 'search#search'
-  post 'search' => 'search#search'
+  get 'search/books' => 'search#search'
+  post 'search/books' => 'search#search'
 
   get 'mypage/index'
 

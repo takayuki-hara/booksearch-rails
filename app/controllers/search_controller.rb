@@ -1,15 +1,14 @@
 require 'net/https'
 
 class SearchController < ApplicationController
-  before_action :set_empty_book
 
   # GET /search/index
   def index
   end
 
-  # GET /search/search
-  # GET /search/search.json
-  # POST /search/search
+  # GET /search/books
+  # GET /search/books.json
+  # POST /search/books
   def search
     fetch(params[:keywd])
 
@@ -20,10 +19,6 @@ class SearchController < ApplicationController
   end
 
   private
-    def set_empty_book
-      @books = Array[Book.new(largeimage_url: "")]
-    end
-
     def get_apikey
       return Apikey.first.key
     end
