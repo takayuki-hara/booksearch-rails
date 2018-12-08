@@ -18,6 +18,26 @@ class SearchController < ApplicationController
     end
   end
 
+  # POST /search/favorite
+  def favorite
+    # 書籍をDBに登録
+    @book = Book.new(book_params)
+    if Book.find_by(title: @book.title).present?
+      @type = "warning"
+      @msg = "登録済みです"
+    else
+      if @book.save
+        @type = "success"
+        @msg = "登録しました"
+      else
+        @type = "error"
+        @msg = "登録できませんでした"
+      end
+    end
+
+    # TODO: favoritesにも登録する
+  end
+
   private
     def get_apikey
       return Apikey.first.key
@@ -69,6 +89,10 @@ class SearchController < ApplicationController
         item_url: item["itemUrl"],
         largeimage_url: item["largeImageUrl"]
       )
+    end
+
+    def book_params
+      params.permit(:title, :price, :author, :publisher, :isbn, :caption, :sales_date, :item_url, :largeimage_url)
     end
 
 end

@@ -33,7 +33,7 @@
     <h3>書籍検索</h3>
   </div>
 
-  <%= form_tag({ controller: :search, action: :search }, id: :fm, class: :search) do %>
+  <%= form_tag({ controller: :search, action: :search }) do %>
     <div class="p-3 pt-3 form-inline">
       <label for="keywd" class="col-form-label">検索キーワード</label>
       <%= text_field_tag :keywd, '', :size => 20, :class => "ml-3 form-control" %>
@@ -52,6 +52,10 @@
       <tr>
         <td colspan="2"><%= book.author %></td>
         <td><%= book.publisher %></td>
+        <td>
+        <%= button_to "お気に入り", {controller: :search, action: :favorite}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
+            params: {index: i, title: book.title, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
+        </td>
         <td>お気に入り</td>
       </tr>
       <tr>
