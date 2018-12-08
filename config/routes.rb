@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'search/books' => 'search#search'
   post 'search/books' => 'search#search'
   post 'search/favorite'
+  post 'search/watch'
 
   get 'mypage/index'
 

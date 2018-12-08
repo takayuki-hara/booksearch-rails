@@ -57,6 +57,12 @@ class SearchController < ApplicationController
     end
   end
 
+  # POST /search/watch
+  def watch
+    @type = "warning"
+    @msg = "未実装です"
+  end
+
   private
     def get_apikey
       return Apikey.first.key
