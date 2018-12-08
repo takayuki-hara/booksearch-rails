@@ -1,27 +1,75 @@
 require 'net/https'
 
 class SearchController < ApplicationController
-  before_action :set_empty_book
 
+  # GET /search/index
   def index
   end
 
+  # GET /search/books
+  # GET /search/books.json
+  # POST /search/books
   def search
-    fetch(params[:keywd])
-    render 'search/index'
+    @keywd = params[:keywd]
+    if params[:page].present?
+      @page = params[:page]
+    else
+      @page = 1
+    end
+    fetch(@keywd, @page)
+
+    respond_to do |format|
+      format.html { render 'search/index' }
+      format.json { render json: @books, status: :ok }
+    end
+  end
+
+  # POST /search/favorite
+  def favorite
+    prm = Book.new(book_params)
+    book = Book.find_by(title: prm.title)
+
+    # 書籍をDBに登録
+    unless book.present?
+      if prm.save
+        book = prm
+      else
+        @type = "error"
+        @msg = "パラメーターエラー"
+        # return
+      end
+    end
+
+    favorite = Favorite.find_by(user_id: 1, book_id: book.id)
+    if favorite.present?
+      @type = "info"
+      @msg = "登録済みです"
+    else
+      # お気に入りを登録する
+      fav = Favorite.new(user_id: 1, book_id: book.id)
+      if fav.save
+        @type = "success"
+        @msg = "登録しました"
+      else
+        @type = "warning"
+        @msg = "登録できませんでした"
+      end
+    end
+  end
+
+  # POST /search/watch
+  def watch
+    @type = "warning"
+    @msg = "未実装です"
   end
 
   private
-    def set_empty_book
-      @books = Array[Book.new(largeimage_url: "")]
-    end
-
     def get_apikey
       return Apikey.first.key
     end
 
-    def fetch(word)
-      params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: 1, sort: 'standard'})
+    def fetch(word, page)
+      params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: page, sort: 'standard'})
       uri = URI.parse("https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?#{params}")
       logger.debug('test logger')
       # 新しくHTTPセッションを開始し、結果をresponseへ格納（Net::HTTPResponseのインスタンス）
@@ -66,6 +114,10 @@ class SearchController < ApplicationController
         item_url: item["itemUrl"],
         largeimage_url: item["largeImageUrl"]
       )
+    end
+
+    def book_params
+      params.permit(:title, :price, :author, :publisher, :isbn, :caption, :sales_date, :item_url, :largeimage_url)
     end
 
 end
