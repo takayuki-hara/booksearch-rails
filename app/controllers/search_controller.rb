@@ -10,7 +10,13 @@ class SearchController < ApplicationController
   # GET /search/books.json
   # POST /search/books
   def search
-    fetch(params[:keywd])
+    @keywd = params[:keywd]
+    if params[:page].present?
+      @page = params[:page]
+    else
+      @page = 1
+    end
+    fetch(@keywd, @page)
 
     respond_to do |format|
       format.html { render 'search/index' }
@@ -43,8 +49,8 @@ class SearchController < ApplicationController
       return Apikey.first.key
     end
 
-    def fetch(word)
-      params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: 1, sort: 'standard'})
+    def fetch(word, page)
+      params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: page, sort: 'standard'})
       uri = URI.parse("https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?#{params}")
       logger.debug('test logger')
       # 新しくHTTPセッションを開始し、結果をresponseへ格納（Net::HTTPResponseのインスタンス）
