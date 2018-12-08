@@ -26,22 +26,35 @@ class SearchController < ApplicationController
 
   # POST /search/favorite
   def favorite
+    prm = Book.new(book_params)
+    book = Book.find_by(title: prm.title)
+
     # 書籍をDBに登録
-    @book = Book.new(book_params)
-    if Book.find_by(title: @book.title).present?
-      @type = "warning"
-      @msg = "登録済みです"
-    else
-      if @book.save
-        @type = "success"
-        @msg = "登録しました"
+    unless book.present?
+      if prm.save
+        book = prm
       else
         @type = "error"
-        @msg = "登録できませんでした"
+        @msg = "パラメーターエラー"
+        # return
       end
     end
 
-    # TODO: favoritesにも登録する
+    favorite = Favorite.find_by(user_id: 1, book_id: book.id)
+    if favorite.present?
+      @type = "info"
+      @msg = "登録済みです"
+    else
+      # お気に入りを登録する
+      fav = Favorite.new(user_id: 1, book_id: book.id)
+      if fav.save
+        @type = "success"
+        @msg = "登録しました"
+      else
+        @type = "warning"
+        @msg = "登録できませんでした"
+      end
+    end
   end
 
   private
