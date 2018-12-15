@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   root 'top#index'
 
   get 'login/index'
+  post 'login/auth'
 
 end
