@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_054512) do
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
+    t.string "token"
     t.integer "role", null: false
     t.string "email"
     t.string "fcm_token"
@@ -74,6 +75,8 @@ ActiveRecord::Schema.define(version: 2018_12_01_054512) do
     t.boolean "enable_fcm_notify", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_users_on_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "favorites", "books"

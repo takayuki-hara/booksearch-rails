@@ -20,4 +20,8 @@ Rails.application.routes.draw do
 
   root 'top#index'
 
+  get 'login/index'
+  get 'logout' => 'login#logout'
+  post 'login/auth'
+
 end
