@@ -62,13 +62,14 @@ class ReleaseWatchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_release_watch
-      @release_watch = ReleaseWatch.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def release_watch_params
-      params.require(:release_watch).permit(:user_id, :book_id, :sales_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_release_watch
+    @release_watch = ReleaseWatch.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def release_watch_params
+    params.require(:release_watch).permit(:user_id, :book_id, :sales_date)
+  end
 end
