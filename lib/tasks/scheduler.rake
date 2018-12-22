@@ -28,3 +28,10 @@ task :notify_books_result_update => :environment do
     end
   end
 end
+
+task :test_mail => :environment do
+  puts "get user..."
+  user = User.find(1)
+  puts "send mail..."
+  NotificationMailer.notify_result_update(user, "test", 1, 2)
+end
