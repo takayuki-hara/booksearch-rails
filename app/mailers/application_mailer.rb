@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'Book Search Service'
+  # form にスペースが入っているとエラーになるので注意
+  default from: 'BookSearchService'
   layout 'mailer'
 end
