@@ -1,5 +1,3 @@
-require 'net/https'
-
 class SearchController < ApplicationController
 
   # GET /search/index

@@ -1,3 +1,5 @@
+require 'net/https'
+
 class BookSearcher
 
   def search(word, page)
