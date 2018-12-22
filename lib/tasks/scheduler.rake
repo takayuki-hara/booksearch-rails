@@ -13,19 +13,22 @@ task :notify_books_result_update => :environment do
     puts "search books..."
     searcher = BookSearcher.new
     result = searcher.search(keyword.keyword, 1)
-    if result["count"].to_i == keyword.item_count
+    count = result["count"].to_i
+    if count == keyword.item_count
       puts "no change"
       next
+    end
+    if user.enable_email_notify
+      puts "send mail..."
+      NotificationMailer.notify_result_update(user, keyword.keyword, keyword.item_count, count).deliver
+    end
+    if user.enable_fcm_notify
+      # TODO: FCM Notify
+      # puts "send fcm..."
     end
     puts "update database..."
     keyword.item_count = result["count"]
     keyword.save
-    if user.enable_email_notify
-      # TODO: Email Notify
-    end
-    if user.enable_fcm_notify
-      # TODO: FCM Notify
-    end
   end
 end
 
@@ -33,5 +36,5 @@ task :test_mail => :environment do
   puts "get user..."
   user = User.find(1)
   puts "send mail..."
-  NotificationMailer.notify_result_update(user, "test", 1, 2)
+  NotificationMailer.notify_result_update(user, "test", 1, 2).deliver
 end
