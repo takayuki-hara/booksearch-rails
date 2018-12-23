@@ -37,9 +37,10 @@ Things you may want to cover:
   heroku run rake db:migrate
   ```
 
-* How to run the test suite
-
 * Services (job queues, cache servers, search engines, etc.)
+
+  * HerokuScheduler
+  * SendGrid
 
 * Deployment instructions
 
@@ -83,3 +84,20 @@ Things you may want to cover:
   # Note
   rails notes
   ```
+* HerokuScheduler
+
+バッチ処理を実行するために使用しているアドオン。
+アドオン自体は無料だがクレジットカード登録していないと使えない。
+時間課金になり、無料枠内での利用に留めるようにする。
+
+参考）Herokuのインスタンスをスリープさせないためのバッチ
+  ``` sh
+  # 9:00 - 21:00 JST (= 0:00 - 12:00 UTC) の間、起動しておきたい場合
+  $ seq 0 12 | grep -qw $((10#`date -u "+%H"`)) && curl https://xxxx.herokuapp.com > /dev/null 2>&1
+  ```
+
+* SendGrid
+
+メールを送信するために使用しているアドオン。
+アドオン自体は無料だがクレジットカード登録していないと使えない。
+10000通くらいまで無料なので十分。
