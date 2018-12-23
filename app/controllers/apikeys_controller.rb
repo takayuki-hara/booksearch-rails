@@ -62,13 +62,14 @@ class ApikeysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_apikey
-      @apikey = Apikey.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def apikey_params
-      params.require(:apikey).permit(:key)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_apikey
+    @apikey = Apikey.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def apikey_params
+    params.require(:apikey).permit(:key)
+  end
 end
