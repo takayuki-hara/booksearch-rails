@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    # ユーザー一覧画面は管理者しかアクセスさせない
+    if @current_user.role != 0
+      redirect_to top_index_url
+    end
+
     @users = User.all
   end
 
