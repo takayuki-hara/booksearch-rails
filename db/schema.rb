@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_054512) do
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.integer "price", null: false
+    t.string "genres", null: false
     t.string "author"
     t.string "publisher"
     t.string "isbn"
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_054512) do
   create_table "keywords", force: :cascade do |t|
     t.bigint "user_id"
     t.string "keyword", null: false
+    t.string "genre", null: false
     t.integer "item_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
