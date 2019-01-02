@@ -17,7 +17,7 @@
         <% @mypage_class = (page_category == 'mypage') ? 'nav-link active' : 'nav-link' %>
         <%= link_to 'マイページ', mypage_index_url, :class => @mypage_class %>
       </li>
-      <% if @current_user.role == 0 %>
+      <% if @current_user.present? && @current_user.role == 0 %>
         <li class="nav-item">
           <% @manage_class = (page_category == 'manage') ? 'nav-link active' : 'nav-link' %>
           <%= link_to '管理画面', manage_console_index_url, :class => @manage_class %>
