@@ -26,7 +26,7 @@
           <td><%= book.publisher %></td>
           <td>
           <%= button_to "お気に入り", {controller: :search, action: :favorite}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
-              params: {index: i, title: book.title, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
+              params: {index: i, title: book.title, genres: book.genres, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
           </td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
           <td><%= link_to('ストア', book.item_url, target: :_blank) %></td>
           <td>
           <%#= button_to "ウォッチ", {controller: :search, action: :watch}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
-              params: {index: i, title: book.title, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
+              params: {index: i, title: book.title, genres: book.genres, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
           </td>
         </tr>
       <% end %>

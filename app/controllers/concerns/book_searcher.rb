@@ -47,6 +47,7 @@ class BookSearcher
   def extract_item(item)
     return Book.new(
       title: item["title"],
+      genres: extract_genre(item["booksGenreId"]),
       price: item["itemPrice"],
       author: item["author"],
       publisher: item["publisherName"],
@@ -62,5 +63,14 @@ class BookSearcher
 
   def get_apikey
     return Apikey.first.key
+  end
+
+  def extract_genre(param)
+    genres = param.split("/")
+    result = Array.new
+    genres.each do |genre|
+      result << genre[0,6]
+    end
+    return result.uniq
   end
 end

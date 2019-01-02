@@ -67,7 +67,7 @@ class SearchController < ApplicationController
   private
 
   def book_params
-    params.permit(:title, :price, :author, :publisher, :isbn, :caption, :sales_date, :item_url, :largeimage_url)
+    params.permit(:title, :genres, :price, :author, :publisher, :isbn, :caption, :sales_date, :item_url, :largeimage_url)
   end
 
 end
