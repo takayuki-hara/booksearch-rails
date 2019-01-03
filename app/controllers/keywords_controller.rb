@@ -4,7 +4,12 @@ class KeywordsController < ApplicationController
   # GET /keywords
   # GET /keywords.json
   def index
-    @keywords = Keyword.all
+    # 管理者は全ユーザー、メンバーは自分の情報だけ見える
+    if @current_user.role == 0
+      @keywords = Keyword.all
+    else
+      @keywords = Keyword.where(user_id: @current_user.id)
+    end
   end
 
   # GET /keywords/1

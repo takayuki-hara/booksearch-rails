@@ -4,7 +4,12 @@ class FavoritesController < ApplicationController
   # GET /favorites
   # GET /favorites.json
   def index
-    @favorites = Favorite.all
+    # 管理者は全ユーザー、メンバーは自分の情報だけ見える
+    if @current_user.role == 0
+      @favorites = Favorite.all
+    else
+      @favorites = Favorite.where(user_id: @current_user.id)
+    end
   end
 
   # GET /favorites/1
