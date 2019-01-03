@@ -8,32 +8,20 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1>Favorites</h1>
-
   <table class="table">
-    <thead>
+    <% @favorites.each do |favorite| %>
       <tr>
-        <th>User</th>
-        <th>Book</th>
-        <th colspan="3"></th>
+        <td rowspan="1"><%= image_tag(favorite.book.largeimage_url, :class => "img-thumbnail") %></td><td>
+        <b><%= favorite.book.title %></b><br>
+        <span class="text-danger">¥ <%= favorite.book.price %>円</span><br>
+        <%= favorite.book.publisher %><br>
+        <%= favorite.book.sales_date %><br>
+        <%= link_to('ストアで見る', favorite.book.item_url, target: :_blank) %><br>
+        <%= link_to 'お気に入り削除', favorite, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %><br>
+        <span class="text-warning"><%= favorite.user.username %></span> さんのお気に入り
+        </td>
       </tr>
-    </thead>
-
-    <tbody>
-      <% @favorites.each do |favorite| %>
-        <tr>
-          <td><%= favorite.user %></td>
-          <td><%= favorite.book %></td>
-          <td><%= link_to 'Show', favorite %></td>
-          <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
-          <td><%= link_to 'Destroy', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
+    <% end %>
   </table>
-
-  <br>
-
-  <%= link_to 'New Keyword', new_favorite_path %>
 
 </div>
