@@ -32,6 +32,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    # 最初のユーザー以外はmember権限
+    if !is_first_user
+      @user.role = 1
+    end
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -68,6 +73,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def is_first_user
+    return User.count == 0
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
