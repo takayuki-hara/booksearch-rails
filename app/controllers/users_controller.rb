@@ -33,7 +33,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     # 最初のユーザー以外はmember権限
-    if !is_first_user
+    if is_first_user
+      @user.role = 0
+    else
       @user.role = 1
     end
 
