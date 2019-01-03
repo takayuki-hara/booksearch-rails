@@ -19,6 +19,7 @@
   <% end %>
 
   <% if @books.present? %>
+    <%= @result["count"] %>件見つかりました<br><br>
     <table class="table">
       <% @books.each_with_index do |book, i| %>
         <tr>
