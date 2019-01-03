@@ -6,11 +6,9 @@
     <h3>ユーザー編集</h3>
   </div>
 
-  <h1>Editing User</h1>
-
   <%= render 'form', user: @user %>
 
-  <%= link_to 'Show', @user %> |
-  <%= link_to 'Back', users_path %>
+  <br>
+  <%= link_to '現在の設定内容の表示', @user %>
 
 </div>
