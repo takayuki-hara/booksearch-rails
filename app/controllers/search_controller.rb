@@ -15,7 +15,7 @@ class SearchController < ApplicationController
       @page = 1
     end
     searcher = BookSearcher.new
-    @result = searcher.search(@keywd, @page)
+    @result = searcher.search(@keywd, @page, params[:genre])
     @books = searcher.get_books
     @message = searcher.get_message
 

@@ -12,7 +12,7 @@ task :notify_books_result_update => :environment do
     end
     puts "search books..."
     searcher = BookSearcher.new
-    result = searcher.search(keyword.keyword, 1)
+    result = searcher.search(keyword.keyword, 1, keyword.genre)
     count = result["count"].to_i
     if count == keyword.item_count
       puts "no change"

@@ -2,8 +2,14 @@ require 'net/https'
 
 class BookSearcher
 
-  def search(word, page)
-    params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: page, sort: 'standard'})
+  def search(word, page, genre_id)
+    if genre_id.present?
+      genre = genre_id
+    else
+      genre = 'null'
+    end
+    Rails.logger.debug('BookSearcher::search() genre=' + genre)
+    params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: page, booksGenreId: genre, sort: 'standard'})
     uri = URI.parse("https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?#{params}")
     
     response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|

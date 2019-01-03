@@ -8,8 +8,12 @@
 
   <%= form_tag({ controller: :search, action: :search }) do %>
     <div class="p-3 pt-3 form-inline">
+      <label for="genre" class="col-form-label">ジャンル</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= select_tag 'genre', options_for_select(get_genres, params[:genre]) %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
       <label for="keywd" class="col-form-label">検索キーワード</label>
-      <%= text_field_tag :keywd, '', :size => 20, :class => "ml-3 form-control" %>
+      <%= text_field_tag :keywd, params[:keywd], :size => 20, :class => "ml-3 form-control" %>
       <%= submit_tag '検索', :class => "ml-3 btn btn-info" %>
     </div>
   <% end %>
