@@ -12,7 +12,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= select_tag 'genre', options_for_select(get_genres, params[:genre]) %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <label for="keywd" class="col-form-label">検索キーワード</label>
+      <label for="keywd" class="col-form-label">キーワード</label>
       <%= text_field_tag :keywd, params[:keywd], :size => 20, :class => "ml-3 form-control" %>
       <%= submit_tag '検索', :class => "ml-3 btn btn-info" %>
     </div>
@@ -23,22 +23,14 @@
     <table class="table">
       <% @books.each_with_index do |book, i| %>
         <tr>
-          <td rowspan="3"><%= image_tag(book.largeimage_url, :class => "img-thumbnail") %></td>
-          <td colspan="4"><%= book.title %></td>
-        </tr>
-        <tr>
-          <td colspan="2"><%= book.author %></td>
-          <td><%= book.publisher %></td>
-          <td>
-          <%= button_to "お気に入り", {controller: :search, action: :favorite}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
+          <td rowspan="1"><%= image_tag(book.largeimage_url, :class => "img-thumbnail") %></td><td>
+          <b><%= book.title %></b><br>
+          <span class="text-danger">¥ <%= book.price %>円</span><br>
+          <%= book.publisher %><br>
+          <%= book.sales_date %><br>
+          <%= link_to('ストアで見る', book.item_url, target: :_blank) %>
+          <%= button_to "お気に入り", {controller: :search, action: :favorite}, {method: :post, :remote => true, :class => "btn btn-light",
               params: {index: i, title: book.title, genres: book.genres, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= book.price %>円</td>
-          <td><%= book.sales_date %></td>
-          <td><%= link_to('ストア', book.item_url, target: :_blank) %></td>
-          <td>
           <%#= button_to "ウォッチ", {controller: :search, action: :watch}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
               params: {index: i, title: book.title, genres: book.genres, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
           </td>
