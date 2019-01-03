@@ -41,13 +41,13 @@ class SearchController < ApplicationController
       end
     end
 
-    favorite = Favorite.find_by(user_id: 1, book_id: book.id)
+    favorite = Favorite.find_by(user_id: @current_user.id, book_id: book.id)
     if favorite.present?
       @type = "info"
       @msg = "登録済みです"
     else
       # お気に入りを登録する
-      fav = Favorite.new(user_id: 1, book_id: book.id)
+      fav = Favorite.new(user_id: @current_user.id, book_id: book.id)
       if fav.save
         @type = "success"
         @msg = "登録しました"
