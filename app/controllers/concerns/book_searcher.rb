@@ -9,7 +9,7 @@ class BookSearcher
       genre = 'null'
     end
     Rails.logger.debug('BookSearcher::search() genre=' + genre)
-    params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: page, booksGenreId: genre, sort: 'standard'})
+    params = URI.encode_www_form({applicationId: get_apikey, format: 'json', formatVersion: 2, keyword: word, hits: 20, page: page, booksGenreId: genre, sort: '-releaseDate'})
     uri = URI.parse("https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?#{params}")
     
     response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
