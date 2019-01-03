@@ -1,31 +1,4 @@
-<!-- ナビゲーション（ほぼ共通） -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
-  <a class="navbar-brand" href="#">Book Search</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">トップ</a>
-      </li>
-      <li class="nav-item active">
-        <%= link_to '書籍検索', search_index_path, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'マイページ', mypage_index_url, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to '管理画面', manage_console_index_url, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">ログイン／ログアウト</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+<% @page_category = 'search' %>
 
 <!-- メイン -->
 <div class="pt-5 pb-5 container">
@@ -35,34 +8,31 @@
 
   <%= form_tag({ controller: :search, action: :search }) do %>
     <div class="p-3 pt-3 form-inline">
-      <label for="keywd" class="col-form-label">検索キーワード</label>
-      <%= text_field_tag :keywd, '', :size => 20, :class => "ml-3 form-control" %>
+      <label for="genre" class="col-form-label">ジャンル</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= select_tag 'genre', options_for_select(get_genres, params[:genre]) %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="keywd" class="col-form-label">キーワード</label>
+      <%= text_field_tag :keywd, params[:keywd], :size => 20, :class => "ml-3 form-control" %>
       <%= submit_tag '検索', :class => "ml-3 btn btn-info" %>
     </div>
   <% end %>
 
   <% if @books.present? %>
+    <%= @result["count"] %>件見つかりました<br><br>
     <table class="table">
       <% @books.each_with_index do |book, i| %>
         <tr>
-          <td rowspan="3"><%= image_tag(book.largeimage_url, :class => "img-thumbnail") %></td>
-          <td colspan="4"><%= book.title %></td>
-        </tr>
-        <tr>
-          <td colspan="2"><%= book.author %></td>
-          <td><%= book.publisher %></td>
-          <td>
-          <%= button_to "お気に入り", {controller: :search, action: :favorite}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
-              params: {index: i, title: book.title, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= book.price %>円</td>
-          <td><%= book.sales_date %></td>
-          <td><%= link_to('ストア', book.item_url, target: :_blank) %></td>
-          <td>
-          <%= button_to "ウォッチ", {controller: :search, action: :watch}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
-              params: {index: i, title: book.title, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
+          <td rowspan="1"><%= image_tag(book.largeimage_url, :class => "img-thumbnail") %></td><td>
+          <b><%= book.title %></b><br>
+          <span class="text-danger">¥ <%= book.price %>円</span><br>
+          <%= book.publisher %><br>
+          <%= book.sales_date %><br>
+          <%= link_to('ストアで見る', book.item_url, target: :_blank) %>
+          <%= button_to "お気に入り", {controller: :search, action: :favorite}, {method: :post, :remote => true, :class => "btn btn-light",
+              params: {index: i, title: book.title, genres: book.genres, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
+          <%#= button_to "ウォッチ", {controller: :search, action: :watch}, {method: :post, :remote => true, :class => "ml-3 btn btn-info",
+              params: {index: i, title: book.title, genres: book.genres, price: book.price, author: book.author, publisher: book.publisher, isbn: book.isbn, caption: book.caption, sales_date: book.sales_date, item_url: book.item_url, largeimage_url: book.largeimage_url}} %>
           </td>
         </tr>
       <% end %>

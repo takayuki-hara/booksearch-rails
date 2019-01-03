@@ -1,4 +1,4 @@
-<%= render 'nav' %>
+<% @page_category = 'mypage' %>
 
 <!-- メイン -->
 <div class="pt-5 pb-5 container">
@@ -9,21 +9,27 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>User:</strong>
+    <strong>ユーザー名:</strong>
     <%= @keyword.user.username %>
   </p>
 
   <p>
-    <strong>Keyword:</strong>
+    <strong>キーワード:</strong>
     <%= @keyword.keyword %>
   </p>
 
   <p>
-    <strong>Item count:</strong>
+    <strong>ジャンル:</strong>
+    <%= @keyword.genre %>
+  </p>
+
+  <p>
+    <strong>ヒット数:</strong>
     <%= @keyword.item_count %>
   </p>
 
-  <%= link_to 'Edit', edit_keyword_path(@keyword) %> |
-  <%= link_to 'Back', keywords_path %>
+  <br>
+  <%= link_to '設定を編集する', edit_keyword_path(@keyword) %> |
+  <%= link_to '一覧に戻る', keywords_path %>
 
 </div>

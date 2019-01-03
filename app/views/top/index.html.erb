@@ -1,62 +1,28 @@
-<!-- ナビゲーション（ほぼ共通） -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
-  <a class="navbar-brand" href="#">Book Search</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">トップ</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to '書籍検索', search_index_path, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'マイページ', mypage_index_url, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to '管理画面', manage_console_index_url, :class => "nav-link" %>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        ユーザー</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if @current_user %>
-            <%= link_to '編集', edit_user_path(@current_user), class: 'dropdown-item' %>
-            <%= link_to 'ログアウト', logout_path, method: :get, class: 'dropdown-item' %>
-          <% else %>
-            <%= link_to '登録', new_user_path, class: 'dropdown-item' %>
-            <%= link_to 'ログイン', root_path, class: 'dropdown-item' %>
-          <% end %>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+<% @page_category = 'top' %>
 
 <!-- メイン -->
 <div class="pt-5 pb-5 container">
   <div class="p-3 pt-5">
-    <h3>新しい情報を求め続ける人のためのサービスです</h3>
+    <h3>新しい書籍を探すためのサービスです</h3>
   </div>
 
   <div class="alert alert-warning px-3" role="alert">
-    開発中です。未実装の機能、バグもあると思われます。ご容赦ください
+    開発中です。広く公開する予定はありません。未実装の機能、バグについてはご容赦ください。
   </div>
 
   <div class="alert alert-light p-3" role="alert">
     <hr>
-    <h4 class="alert-heading">提供予定の機能</h4>
-    <p>キーワードでの書籍検索</p>
-    <p>キーワードを登録し、書籍のラインナップに変化があったら通知</p>
-    <p>未発売書籍の発売直前通知</p>
-    <p>※通知機能は、メールあるいはアプリへのプッシュ通知</p>
+    <h4 class="alert-heading">提供している機能</h4>
+    <p>キーワード、ジャンル指定での書籍検索</p>
+    <p>キーワードを登録し、書籍のラインナップに変化があったらメール通知</p>
+    <p>お気に入り登録・一覧表示</p>
     <hr>
     <h4 class="alert-heading">想定するユースケース</h4>
     <p>技術書の新刊情報を収集したい</p>
     <p>好きな作家の新刊情報を教えてほしい</p>
     <p>&nbsp;&nbsp;などなど</p>
+    <hr>
+    <h5 class="alert-heading">未実装の機能</h4>
+    <p>未発売書籍の発売直前通知</p>
   </div>
 </div>

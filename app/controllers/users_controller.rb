@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :check_logined, only: [:new, :create]
+  skip_before_action :check_logined, only: [:show, :new, :create]
 
   # GET /users
   # GET /users.json
   def index
+    # ユーザー一覧画面は管理者しかアクセスさせない
+    if @current_user.role != 0
+      redirect_to top_index_url
+    end
+
     @users = User.all
   end
 
@@ -26,6 +31,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+
+    # 最初のユーザー以外はmember権限
+    if is_first_user
+      @user.role = 0
+    else
+      @user.role = 1
+    end
 
     respond_to do |format|
       if @user.save
@@ -63,6 +75,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def is_first_user
+    return User.count == 0
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user

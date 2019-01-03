@@ -4,7 +4,12 @@ class ReleaseWatchesController < ApplicationController
   # GET /release_watches
   # GET /release_watches.json
   def index
-    @release_watches = ReleaseWatch.all
+    # 管理者は全ユーザー、メンバーは自分の情報だけ見える
+    if @current_user.role == 0
+      @release_watches = ReleaseWatch.all
+    else
+      @release_watches = ReleaseWatch.where(user_id: @current_user.id)
+    end
   end
 
   # GET /release_watches/1

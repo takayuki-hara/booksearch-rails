@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :users
   resources :keywords
-  resources :favorites
   resources :release_watches
 
   resources :apikeys
@@ -13,6 +12,8 @@ Rails.application.routes.draw do
   post 'search/watch'
 
   get 'mypage/index'
+  get 'favorites' => 'favorites#index'
+  delete 'favorites/:id' => 'favorites#destroy', as: 'favorite'
 
   get 'manage_console/index'
 

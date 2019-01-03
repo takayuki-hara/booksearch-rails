@@ -4,7 +4,12 @@ class KeywordsController < ApplicationController
   # GET /keywords
   # GET /keywords.json
   def index
-    @keywords = Keyword.all
+    # 管理者は全ユーザー、メンバーは自分の情報だけ見える
+    if @current_user.role == 0
+      @keywords = Keyword.all
+    else
+      @keywords = Keyword.where(user_id: @current_user.id)
+    end
   end
 
   # GET /keywords/1
@@ -70,6 +75,6 @@ class KeywordsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def keyword_params
-    params.require(:keyword).permit(:user_id, :keyword, :item_count)
+    params.require(:keyword).permit(:user_id, :keyword, :genre, :item_count)
   end
 end

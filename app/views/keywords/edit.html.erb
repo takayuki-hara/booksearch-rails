@@ -1,4 +1,4 @@
-<%= render 'nav' %>
+<% @page_category = 'mypage' %>
 
 <!-- メイン -->
 <div class="pt-5 pb-5 container">
@@ -6,11 +6,10 @@
     <h3>ユーザー編集</h3>
   </div>
 
-<h1>Editing Keyword</h1>
-
   <%= render 'form', keyword: @keyword %>
 
-  <%= link_to 'Show', @keyword %> |
-  <%= link_to 'Back', keywords_path %>
+  <br>
+  <%= link_to '設定を表示する', @keyword %> |
+  <%= link_to '一覧に戻る', keywords_path %>
 
 </div>
