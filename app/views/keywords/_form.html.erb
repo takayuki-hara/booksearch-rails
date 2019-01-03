@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, :value => @current_user.id %>
   </div>
 
   <div class="field">
@@ -22,8 +21,13 @@
   </div>
 
   <div class="field">
+    <%= form.label :genre %>
+    <%= form.select 'genre', get_genres, :selected => '001005' %>
+  </div>
+
+  <div class="field">
     <%= form.label :item_count %>
-    <%= form.number_field :item_count %>
+    <%= form.number_field :item_count, :value => 0 %>
   </div>
 
   <div class="actions">
