@@ -8,14 +8,17 @@
 
   <div class="alert alert-danger px-3" role="alert">
     管理者向けのページです。管理者以外は編集しないようお願いします。<br>
-    ※最終的にはアカウントの権限でアクセスできなくする予定です
+    ※管理者権限が無いとアクセスできないはずです
   </div>
 
   <div class="alert alert-light p-3" role="alert">
     <h4 class="alert-heading">機能</h4>
     <hr>
-    <p><%= link_to 'APIキー設定へ', apikeys_path %></p>
-    <p><%= link_to 'ユーザー一覧へ', users_path %></p>
+    <p><%= link_to 'APIキー設定', apikeys_path %></p>
+    <p><%= link_to 'ユーザー一覧', users_path %></p>
+    <p><%= link_to 'キーワード一覧', keywords_path %></p>
+    <p><%= link_to 'お気に入りの一覧', favorites_path %></p>
+    <p>※書籍のDB一覧もあっても良いかも</p>
   </div>
 </div>
 
