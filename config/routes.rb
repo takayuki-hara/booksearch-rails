@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       delete 'users/:id' => 'users#destroy'
 
       post 'users/login'
+      get 'search' => 'search#search'
     end
   end
 end
