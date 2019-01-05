@@ -25,4 +25,11 @@ Rails.application.routes.draw do
   get 'logout' => 'login#logout'
   post 'login/auth'
 
+  # API
+  namespace :api, { format: 'json' } do
+    namespace :v1 do
+      get 'users/me'
+      post 'users/login'
+    end
+  end
 end
