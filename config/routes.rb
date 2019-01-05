@@ -28,7 +28,13 @@ Rails.application.routes.draw do
   # API
   namespace :api, { format: 'json' } do
     namespace :v1 do
-      get 'users/me'
+      get 'users' => 'users#index'
+      get 'users/me' => 'users#me'
+      get 'users/:id' => 'users#show'
+      post 'users' => 'users#create'
+      put 'users/:id' => 'users#update'
+      delete 'users/:id' => 'users#destroy'
+
       post 'users/login'
     end
   end
