@@ -37,6 +37,11 @@ Rails.application.routes.draw do
 
       post 'users/login'
       get 'search' => 'search#search'
+
+      get 'keywords' => 'keywords#index'
+      post 'keywords' => 'keywords#create'
+      put 'keywords/:id' => 'keywords#update'
+      delete 'keywords/:id' => 'keywords#destroy'
     end
   end
 end
