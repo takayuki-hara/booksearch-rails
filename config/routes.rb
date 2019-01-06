@@ -42,6 +42,10 @@ Rails.application.routes.draw do
       post 'keywords' => 'keywords#create'
       put 'keywords/:id' => 'keywords#update'
       delete 'keywords/:id' => 'keywords#destroy'
+
+      get 'favorites' => 'favorites#index'
+      post 'favorites' => 'favorites#create'
+      delete 'favorites/:id' => 'favorites#destroy'
     end
   end
 end
