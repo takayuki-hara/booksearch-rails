@@ -5,7 +5,8 @@ class Api::V1::FavoritesController < ApiController
   def index
     # 自分の情報だけ見える
     @favorites = Favorite.where(user_id: current_user.id)
-    render json: @favorites
+    render 'favorites'
+    # render json: @favorites
   end
 
   # POST /favorites
