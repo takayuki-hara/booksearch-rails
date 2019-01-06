@@ -42,7 +42,7 @@ class Api::V1::UsersController < ApiController
     end
   end
 
-  # PATCH/PUT /users/1
+  # PUT /users/1
   def update
     if @user.update(user_params)
       render json: @user
@@ -66,6 +66,6 @@ class Api::V1::UsersController < ApiController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email, :fcm_token, :enable_email_notify, :enable_fcm_notify)
+    params.permit(:username, :password, :password_confirmation, :role, :email, :fcm_token, :enable_email_notify, :enable_fcm_notify)
   end
 end
