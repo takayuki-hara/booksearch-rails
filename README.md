@@ -47,8 +47,8 @@ Things you may want to cover:
   ``` ruby
   # ログイン
   heroku login
-  # アプリケーションの作成※初回のみ
-  heroku create booksearch-bunl25ft
+  # アプリケーションの作成※初回のみ
+  heroku create booksearch-xxxxx
   # デプロイ ※develop=ソースのあるリポジトリの対象ブラウザ
   git push heroku develop:master
   # デプロイしたアプリを開く
@@ -73,9 +73,9 @@ Things you may want to cover:
   rails new booksearch —database=postgresql
   # コントローラーを追加
   rails generate controller Top index
-  # モデルを追加
+  # モデルを追加
   rails generate model book title:string:index price:integer author:string publisher:string isbn:string caption:string sales_date:string item_url:string largeimage_url:string
-  # scaffoldでまとめて作成
+  # scaffoldでまとめて作成
   rails generate scaffold apikey apikey:string
   # ローカルDBへの接続
   rails dbconsole
@@ -87,8 +87,8 @@ Things you may want to cover:
 * HerokuScheduler
 
 バッチ処理を実行するために使用しているアドオン。
-アドオン自体は無料だがクレジットカード登録していないと使えない。
-時間課金になり、無料枠内での利用に留めるようにする。
+アドオン自体は無料だがクレジットカード登録していないと使えない。
+時間課金になり、無料枠内での利用に留めるようにする。
 
 参考）Herokuのインスタンスをスリープさせないためのバッチ
   ``` sh
@@ -99,5 +99,5 @@ Things you may want to cover:
 * SendGrid
 
 メールを送信するために使用しているアドオン。
-アドオン自体は無料だがクレジットカード登録していないと使えない。
-10000通くらいまで無料なので十分。
+アドオン自体は無料だがクレジットカード登録していないと使えない。
+10000通くらいまで無料なので十分。

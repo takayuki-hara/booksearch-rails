@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :apikeys
 
   get 'search/index'
-  get 'search/books' => 'search#search'
   post 'search/books' => 'search#search'
   post 'search/favorite'
   post 'search/watch'
