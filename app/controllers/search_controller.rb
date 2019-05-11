@@ -9,13 +9,14 @@ class SearchController < ApplicationController
   # POST /search/books
   def search
     @keywd = params[:keywd]
+    @genre = params[:genre]
     if params[:page].present?
       @page = params[:page]
     else
       @page = 1
     end
     searcher = BookSearcher.new
-    @result = searcher.search(@keywd, @page, params[:genre])
+    @result = searcher.search(@keywd, @page, @genre)
     @books = searcher.get_books
     @message = searcher.get_message
 

@@ -41,11 +41,11 @@
       <div class="mx-auto btn-group">
         <% if @page.to_i > 1 %>
           <%= button_to "Prev", {controller: :search, action: :search}, {method: :post, :class => "ml-3 btn btn-primary",
-              params: {keywd: @keywd, page: @page.to_i - 1}} %>
+              params: {keywd: @keywd, page: @page.to_i - 1, genre: @genre}} %>
         <% end %>
         <% if @page.to_i < @result["pageCount"].to_i %>
           <%= button_to "Next", {controller: :search, action: :search}, {method: :post, :class => "ml-3 btn btn-primary",
-              params: {keywd: @keywd, page: @page.to_i + 1}} %>
+              params: {keywd: @keywd, page: @page.to_i + 1, genre: @genre}} %>
         <% end %>
         <br><br>
       </div>
