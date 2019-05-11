@@ -1,4 +1,5 @@
 json.array! @favorites do |favorite|
+  json.id favorite.id
   json.user_id favorite.user_id
   json.book do
     json.id favorite.book.id
